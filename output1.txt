@@ -1,0 +1,1786 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| classicmodels      |
+| course             |
+| hr                 |
+| mysql              |
+| performance_schema |
+| test               |
+| vishal             |
++--------------------+
+8 rows in set (0.01 sec)
+
+
+mysql> use course;
+Database changed
+mysql> help
+
+For information about MySQL products and services, visit:
+   http://www.mysql.com/
+For developer information, including the MySQL Reference Manual, visit:
+   http://dev.mysql.com/
+To buy MySQL Enterprise support, training, or other products, visit:
+   https://shop.mysql.com/
+
+List of all MySQL commands:
+Note that all text commands must be first on line and end with ';'
+?         (\?) Synonym for `help'.
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+ego       (\G) Send command to mysql server, display result vertically.
+exit      (\q) Exit mysql. Same as quit.
+go        (\g) Send command to mysql server.
+help      (\h) Display this help.
+notee     (\t) Don't write into outfile.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+quit      (\q) Quit mysql.
+rehash    (\#) Rebuild completion hash.
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+status    (\s) Get status information from the server.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+use       (\u) Use another database. Takes database name as argument.
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don't show warnings after every statement.
+
+For server side help, type 'help contents'
+
+
+mysql> help contents;
+You asked for help about help category: "Contents"
+For more information, type 'help <item>', where <item> is one of the following
+categories:
+   Account Management
+   Administration
+   Compound Statements
+   Data Definition
+   Data Manipulation
+   Data Types
+   Functions
+   Functions and Modifiers for Use with GROUP BY
+   Geographic Features
+   Help Metadata
+   Language Structure
+   Plugins
+   Table Maintenance
+   Transactions
+   User-Defined Functions
+   Utility
+
+mysql> help data types;
+You asked for help about help category: "Data Types"
+For more information, type 'help <item>', where <item> is one of the following
+topics:
+   AUTO_INCREMENT
+   BIGINT
+   BINARY
+   BIT
+   BLOB
+   BLOB DATA TYPE
+   BOOLEAN
+   CHAR
+   CHAR BYTE
+   DATE
+   DATETIME
+   DEC
+   DECIMAL
+   DOUBLE
+   DOUBLE PRECISION
+   ENUM
+   FLOAT
+   INT
+   INTEGER
+   LONGBLOB
+   LONGTEXT
+   MEDIUMBLOB
+   MEDIUMINT
+   MEDIUMTEXT
+   SET DATA TYPE
+   SMALLINT
+   TEXT
+   TIME
+   TIMESTAMP
+   TINYBLOB
+   TINYINT
+   TINYTEXT
+   VARBINARY
+   VARCHAR
+   YEAR DATA TYPE
+
+mysql> help tinyblob
+Name: 'TINYBLOB'
+Description:
+TINYBLOB
+
+A BLOB column with a maximum length of 255 (28 - 1) bytes. Each
+TINYBLOB value is stored using a one-byte length prefix that indicates
+the number of bytes in the value.
+
+URL: http://dev.mysql.com/doc/refman/5.5/en/string-type-overview.html
+
+
+mysql> select @@hostname;
++--------------+
+| @@hostname   |
++--------------+
+| Vishal-Lappy |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> #create database <name>;
+mysql> creat database hello_world_db;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'creat database hello_world_db' at line 1
+mysql> create database hello_world_db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create database testing_db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> #drop database <dbname>;
+mysql> drop database hello_world_db;
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> drop database testing_db;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| classicmodels      |
+| course             |
+| hr                 |
+| mysql              |
+| performance_schema |
+| test               |
+| vishal             |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> #both the dbs are gone;
+mysql> #now to use any particular db
+mysql> #we will create and use a db;
+mysql> create database testing_db;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> #use <dbname>;
+mysql> use testing_db;
+Database changed
+mysql> #to check which db is being used;
+mysql> select database();
++------------+
+| database() |
++------------+
+| testing_db |
++------------+
+1 row in set (0.00 sec)
+
+mysql> drop database testing_db;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| classicmodels      |
+| course             |
+| hr                 |
+| mysql              |
+| performance_schema |
+| test               |
+| vishal             |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> #we are not using any db now;
+mysql> #now we will see tables
+mysql> # dbs use tables to store data
+mysql> #tables hold data
+mysql> #a db uses multiple tables
+mysql> #colums are the headers
+mysql> #rows are the actual data per headers
+mysql> 
+mysql> 
+mysql> #always remember to fix propr data types per column;
+mysql> #various data types are
+mysql> 
+mysql> 
+mysql> help data types;
+You asked for help about help category: "Data Types"
+For more information, type 'help <item>', where <item> is one of the following
+topics:
+   AUTO_INCREMENT
+   BIGINT
+   BINARY
+   BIT
+   BLOB
+   BLOB DATA TYPE
+   BOOLEAN
+   CHAR
+   CHAR BYTE
+   DATE
+   DATETIME
+   DEC
+   DECIMAL
+   DOUBLE
+   DOUBLE PRECISION
+   ENUM
+   FLOAT
+   INT
+   INTEGER
+   LONGBLOB
+   LONGTEXT
+   MEDIUMBLOB
+   MEDIUMINT
+   MEDIUMTEXT
+   SET DATA TYPE
+   SMALLINT
+   TEXT
+   TIME
+   TIMESTAMP
+   TINYBLOB
+   TINYINT
+   TINYTEXT
+   VARBINARY
+   VARCHAR
+   YEAR DATA TYPE
+
+mysql> # to create a table;
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| classicmodels      |
+| course             |
+| hr                 |
+| mysql              |
+| performance_schema |
+| test               |
+| vishal             |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use course;
+Database changed
+mysql> create table cats ()
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> create table cats (
+    -> name varchar (100),
+    -> age int
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| cats             |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> #to see the table characteristics;
+mysql> describe cats;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(100) | YES  |     | NULL    |       |
+| age   | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> #to see colums of a table
+mysql> 
+mysql> show columns from cats;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(100) | YES  |     | NULL    |       |
+| age   | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> desc cats;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(100) | YES  |     | NULL    |       |
+| age   | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> #all the above 3 are same;
+mysql> # almost same....
+mysql> 
+mysql> 
+mysql> 
+mysql> # now lets delete a table;
+mysql> 
+mysql> #drop table <table name>;
+mysql> 
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| cats             |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> drop table cats;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> # lets make another table
+mysql> 
+mysql> create table pastries (
+    -> name varchar (50),
+    -> quantity int
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.15 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| pastries         |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> desc pastries;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(50) | YES  |     | NULL    |       |
+| quantity | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> drop table pastries;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> # now lets input data in the tables;
+mysql> 
+mysql> 
+mysql> ############# inserting data #######################
+mysql> 
+mysql> create table cats(
+    -> name varchar (40),
+    -> age int
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| cats             |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into cats(name, age)
+    -> values (victoria, 5)
+    -> ;
+ERROR 1054 (42S22): Unknown column 'victoria' in 'field list'
+mysql> insert into cats(name, age)
+    -> values ('victoria', 5)
+    -> ;
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into cats (age, name) values (10 , 'drako')
+    -> ;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> # be carefull with the order of columns and dont forget the " " or ' ' for varchar inputs;
+mysql> 
+mysql> 
+mysql> # use of select statements;
+mysql> # basically select is used to view data from table
+mysql> 
+mysql> select * from cats;
++----------+------+
+| name     | age  |
++----------+------+
+| victoria |    5 |
+| drako    |   10 |
++----------+------+
+2 rows in set (0.11 sec)
+
+mysql> # more on select to be seen later
+mysql> 
+mysql> # first lets focus on inserting data efficiently
+mysql> 
+mysql> # multiple insert
+mysql> 
+mysql> insert into cats (name, age)
+    -> values ('Charlie', 10),
+    -> ('Sadie', 3),
+    -> ('Lazy Bear', 1)
+    -> ;
+Query OK, 3 rows affected (0.08 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> # insert multiple values using " , " after every value entry
+mysql> 
+mysql> select * from cats;
++-----------+------+
+| name      | age  |
++-----------+------+
+| victoria  |    5 |
+| drako     |   10 |
+| Charlie   |   10 |
+| Sadie     |    3 |
+| Lazy Bear |    1 |
++-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> # now lets try more
+mysql> 
+mysql> create table people (
+    -> first_name varchar(20),
+    -> last_name varchar(20),
+    -> age int
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| cats             |
+| people           |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc people;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| first_name | varchar(20) | YES  |     | NULL    |       |
+| last_name  | varchar(20) | YES  |     | NULL    |       |
+| age        | int(11)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into people (first_name,last_name,age) values ('Tina', 'Belcher', 13);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from pepople;
+ERROR 1146 (42S02): Table 'course.pepople' doesn't exist
+mysql> select * from people;
++------------+-----------+------+
+| first_name | last_name | age  |
++------------+-----------+------+
+| Tina       | Belcher   |   13 |
++------------+-----------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into people (first_name,last_name,age) values ('Bob', 'Belcher', 45), ('Linda','Belcher',45),('Phillip','Frond',38),('Calvin','Fischoeder',70);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from people;
++------------+------------+------+
+| first_name | last_name  | age  |
++------------+------------+------+
+| Tina       | Belcher    |   13 |
+| Bob        | Belcher    |   45 |
+| Linda      | Belcher    |   45 |
+| Phillip    | Frond      |   38 |
+| Calvin     | Fischoeder |   70 |
++------------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| course     |
++------------+
+1 row in set (0.00 sec)
+
+mysql> # if you get any for any query, to see that warning use the following
+mysql> 
+mysql> show warnings;
+Empty set (0.00 sec)
+
+mysql> insert into cats (name, age) 
+    -> values (' this text is to generate a warning for this illustration purpose)
+    '> ;
+    '> 
+    '> bvbbububindiunicundsncmdc.d[clchycbybdc  and some more.........', 25)
+    -> ;
+ERROR 1406 (22001): Data too long for column 'name' at row 1
+mysql> insert into cats (name, age) 
+    -> values (' this text is to generate a warning for this illustration purpose
+    '> if we get long data ' , 14 );
+ERROR 1406 (22001): Data too long for column 'name' at row 1
+mysql> # sorry i am not abe to illustrate it over here
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> insert into cats (name, age) values ('random', 'vhb' );
+ERROR 1366 (HY000): Incorrect integer value: 'vhb' for column 'age' at row 1
+mysql> select * from cats;
++-----------+------+
+| name      | age  |
++-----------+------+
+| victoria  |    5 |
+| drako     |   10 |
+| Charlie   |   10 |
+| Sadie     |    3 |
+| Lazy Bear |    1 |
++-----------+------+
+5 rows in set (0.00 sec)
+
+mysql> # null and not null  in a column;
+mysql> 
+mysql> desc cats;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(40) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> # Null says yes
+mysql> 
+mysql> # null allows no values
+mysql> 
+mysql> insert into cats (name) values ('meouth');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cats;
++-----------+------+
+| name      | age  |
++-----------+------+
+| victoria  |    5 |
+| drako     |   10 |
+| Charlie   |   10 |
+| Sadie     |    3 |
+| Lazy Bear |    1 |
+| meouth    | NULL |
++-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> insert into cats (name, age) values ( );
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into cats () values ( );
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from cats;
++-----------+------+
+| name      | age  |
++-----------+------+
+| victoria  |    5 |
+| drako     |   10 |
+| Charlie   |   10 |
+| Sadie     |    3 |
+| Lazy Bear |    1 |
+| meouth    | NULL |
+| NULL      | NULL |
++-----------+------+
+7 rows in set (0.00 sec)
+
+mysql> # to avoid null entries;
+mysql> # we have to create a table accordingly at the begining or then modify the table characteristics
+mysql> 
+mysql> 
+mysql> # we will make a new table at first;
+mysql> 
+mysql> create table cats2(
+    -> name varchar(100) not null,
+    -> age int not null
+    -> )
+    -> ;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> desc cats2;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar(100) | NO   |     | NULL    |       |
+| age   | int(11)      | NO   |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> # Null says "No"
+mysql> 
+mysql> insert into cats2 () values(); 
+ERROR 1364 (HY000): Field 'name' doesn't have a default value
+mysql> # now no null value will be allowed
+mysql> 
+mysql> insert into cats2 (name) values('texas'); 
+ERROR 1364 (HY000): Field 'age' doesn't have a default value
+mysql> select * from cats2;
+Empty set (0.00 sec)
+
+mysql> # default values and 'Default' constraint
+mysql> 
+mysql> create table cats3 (
+    -> name varchar (20) default ' no name ',
+    -> age int default 0
+    -> );
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> desc cats3;
++-------+-------------+------+-----+-----------+-------+
+| Field | Type        | Null | Key | Default   | Extra |
++-------+-------------+------+-----+-----------+-------+
+| name  | varchar(20) | YES  |     |  no name  |       |
+| age   | int(11)     | YES  |     | 0         |       |
++-------+-------------+------+-----+-----------+-------+
+2 rows in set (0.05 sec)
+
+mysql> insert into cats3 (name) values('texas'); 
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from cats3;
++-------+------+
+| name  | age  |
++-------+------+
+| texas |    0 |
++-------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into cats3 () values(); 
+Query OK, 1 row affected (0.13 sec)
+
+mysql> select * from cats3;
++-----------+------+
+| name      | age  |
++-----------+------+
+| texas     |    0 |
+|  no name  |    0 |
++-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> # using not null as well as default
+mysql> # y to use not null as well as default
+mysql> # NULL can still be set manually if not stopped
+mysql> 
+mysql> insert into cats3 (name, age) values('Richie', NULL); 
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from cats3;
++-----------+------+
+| name      | age  |
++-----------+------+
+| texas     |    0 |
+|  no name  |    0 |
+| Richie    | NULL |
++-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> # observe the NULL
+mysql> 
+mysql> # thus create table as follows;
+mysql> 
+mysql> 
+mysql> create table cats4
+    -> (
+    -> name varchar(50) not null default 'unnamed',
+    -> age int not null default 99
+    -> );
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> desc cats4;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(50) | NO   |     | unnamed |       |
+| age   | int(11)     | NO   |     | 99      |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> # Null = NO and also holds Default value
+mysql> 
+mysql> insert into cats4 (name, age) values('Richie', NULL); 
+ERROR 1048 (23000): Column 'age' cannot be null
+mysql> 
+mysql> # NULL insertion is not allowed at all
+mysql> 
+mysql> 
+mysql> # we need unique data in our table
+mysql> 
+mysql> CREATE TABLE unique_cats
+    ->   (
+    ->     cat_id INT NOT NULL,
+    ->     name VARCHAR(100),
+    ->     age INT,
+    ->     PRIMARY KEY (cat_id)
+    ->   );
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> # primary key keeps uniqueness 
+mysql> 
+mysql> desc unique_cats;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| cat_id | int(11)      | NO   | PRI | NULL    |       |
+| name   | varchar(100) | YES  |     | NULL    |       |
+| age    | int(11)      | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+3 rows in set (0.04 sec)
+
+mysql> INSERT INTO unique_cats(cat_id, name, age) VALUES(1, 'Fred', 23);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO unique_cats(cat_id, name, age) VALUES(2, 'Louise', 3);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO unique_cats(cat_id, name, age) VALUES(1, 'James', 3);
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+mysql> 
+mysql> 
+mysql> # so now cat_id will always be unique and no duplicate entries will be entrd
+mysql> 
+mysql> #Adding in AUTO_INCREMENT:
+mysql> 
+mysql> CREATE TABLE unique_cats2 (
+    ->     cat_id INT NOT NULL AUTO_INCREMENT,
+    ->     name VARCHAR(100),
+    ->     age INT,
+    ->     PRIMARY KEY (cat_id)
+    -> );
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> desc unique_cats2;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| cat_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | YES  |     | NULL    |                |
+| age    | int(11)      | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> # now no need to feed  values for cat_id;
+mysql> # it will be auto inc for every unique insert;
+mysql> 
+mysql> 
+mysql> #INSERT a couple new cats:
+mysql> 
+mysql> INSERT INTO unique_cats2(name, age) VALUES('Skippy', 4);
+Query OK, 1 row affected (0.70 sec)
+
+mysql> INSERT INTO unique_cats2(name, age) VALUES('Jiff', 3);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO unique_cats2(name, age) VALUES('Jiff', 3);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO unique_cats2(name, age) VALUES('Jiff', 3);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO unique_cats2(name, age) VALUES('Skippy', 4);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SELECT * FROM unique_cats2;
++--------+--------+------+
+| cat_id | name   | age  |
++--------+--------+------+
+|      1 | Skippy |    4 |
+|      2 | Jiff   |    3 |
+|      3 | Jiff   |    3 |
+|      4 | Jiff   |    3 |
+|      5 | Skippy |    4 |
++--------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> #Table Constraints Exercise
+mysql> 
+mysql> CREATE TABLE employees (
+    ->     id INT AUTO_INCREMENT NOT NULL,
+    ->     first_name VARCHAR(255) NOT NULL,
+    ->     last_name VARCHAR(255) NOT NULL,
+    ->     middle_name VARCHAR(255),
+    ->     age INT NOT NULL,
+    ->     current_status VARCHAR(255) NOT NULL DEFAULT 'employed',
+    ->     PRIMARY KEY(id)
+    -> );
+Query OK, 0 rows affected (0.20 sec)
+
+mysql> desc employees;
++----------------+--------------+------+-----+----------+----------------+
+| Field          | Type         | Null | Key | Default  | Extra          |
++----------------+--------------+------+-----+----------+----------------+
+| id             | int(11)      | NO   | PRI | NULL     | auto_increment |
+| first_name     | varchar(255) | NO   |     | NULL     |                |
+| last_name      | varchar(255) | NO   |     | NULL     |                |
+| middle_name    | varchar(255) | YES  |     | NULL     |                |
+| age            | int(11)      | NO   |     | NULL     |                |
+| current_status | varchar(255) | NO   |     | employed |                |
++----------------+--------------+------+-----+----------+----------------+
+6 rows in set (0.01 sec)
+
+mysql> INSERT INTO employees(first_name, last_name, age) VALUES
+    -> ('Dora', 'Smith', 58);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from employees;
++----+------------+-----------+-------------+-----+----------------+
+| id | first_name | last_name | middle_name | age | current_status |
++----+------------+-----------+-------------+-----+----------------+
+|  1 | Dora       | Smith     | NULL        |  58 | employed       |
++----+------------+-----------+-------------+-----+----------------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO employees(first_name, last_name, age) VALUES
+    -> ('Rocko','Hatten', 45);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from employees;
++----+------------+-----------+-------------+-----+----------------+
+| id | first_name | last_name | middle_name | age | current_status |
++----+------------+-----------+-------------+-----+----------------+
+|  1 | Dora       | Smith     | NULL        |  58 | employed       |
+|  2 | Rocko      | Hatten    | NULL        |  45 | employed       |
++----+------------+-----------+-------------+-----+----------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO employees(first_name, last_name,middle_name, age, current_status) VALUES
+    -> ('Vishal','Danve','Vasant',23,unemployed)
+    -> ;
+ERROR 1054 (42S22): Unknown column 'unemployed' in 'field list'
+mysql> INSERT INTO employees(first_name, last_name,middle_name, age, current_status) VALUES
+    -> ('Vishal','Danve','Vasant',23,'unemployed');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from employees;
++----+------------+-----------+-------------+-----+----------------+
+| id | first_name | last_name | middle_name | age | current_status |
++----+------------+-----------+-------------+-----+----------------+
+|  1 | Dora       | Smith     | NULL        |  58 | employed       |
+|  2 | Rocko      | Hatten    | NULL        |  45 | employed       |
+|  3 | Vishal     | Danve     | Vasant      |  23 | unemployed     |
++----+------------+-----------+-------------+-----+----------------+
+3 rows in set (0.00 sec)
+
+mysql> # CRUD
+mysql>
+mysql> #create
+mysql> #read
+mysql> #update
+mysql> #delete
+mysql> 
+mysql> 
+mysql> # we will drop and make a new cats table as per our req
+mysql> 
+mysql> DROP TABLE cats;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> 
+mysql> show tables;
++------------------+
+| Tables_in_course |
++------------------+
+| cats2            |
+| cats3            |
+| cats4            |
+| employees        |
+| people           |
+| unique_cats      |
+| unique_cats2     |
++------------------+
+7 rows in set (0.00 sec)
+
+mysql> #Recreate a new cats table:
+mysql> 
+mysql> CREATE TABLE cats 
+    ->   ( 
+    ->      cat_id INT NOT NULL AUTO_INCREMENT, 
+    ->      name   VARCHAR(100), 
+    ->      breed  VARCHAR(100), 
+    ->      age    INT, 
+    ->      PRIMARY KEY (cat_id) 
+    ->   );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> #insert our cats data
+mysql> 
+mysql> INSERT INTO cats(name, breed, age) 
+    -> VALUES ('Ringo', 'Tabby', 4),
+    ->        ('Cindy', 'Maine Coon', 10),
+    ->        ('Dumbledore', 'Maine Coon', 11),
+    ->        ('Egg', 'Persian', 4),
+    ->        ('Misty', 'Tabby', 13),
+    ->        ('George Michael', 'Ragdoll', 9),
+    ->        ('Jackson', 'Sphynx', 7);
+Query OK, 7 rows affected (0.03 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> desc cats;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| cat_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | YES  |     | NULL    |                |
+| breed  | varchar(100) | YES  |     | NULL    |                |
+| age    | int(11)      | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> select * from cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Egg            | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> # official intro to select statement
+mysql> 
+mysql> # READ part of CRUD
+mysql> 
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Tabby      |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Egg            | Persian    |    4 |
+|      5 | Misty          | Tabby      |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT name FROM cats;
++----------------+
+| name           |
++----------------+
+| Ringo          |
+| Cindy          |
+| Dumbledore     |
+| Egg            |
+| Misty          |
+| George Michael |
+| Jackson        |
++----------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT age FROM cats;
++------+
+| age  |
++------+
+|    4 |
+|   10 |
+|   11 |
+|    4 |
+|   13 |
+|    9 |
+|    7 |
++------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT cat_id FROM cats;
++--------+
+| cat_id |
++--------+
+|      1 |
+|      2 |
+|      3 |
+|      4 |
+|      5 |
+|      6 |
+|      7 |
++--------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT name, age FROM cats;
++----------------+------+
+| name           | age  |
++----------------+------+
+| Ringo          |    4 |
+| Cindy          |   10 |
+| Dumbledore     |   11 |
+| Egg            |    4 |
+| Misty          |   13 |
+| George Michael |    9 |
+| Jackson        |    7 |
++----------------+------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT cat_id, name, age FROM cats;
++--------+----------------+------+
+| cat_id | name           | age  |
++--------+----------------+------+
+|      1 | Ringo          |    4 |
+|      2 | Cindy          |   10 |
+|      3 | Dumbledore     |   11 |
+|      4 | Egg            |    4 |
+|      5 | Misty          |   13 |
+|      6 | George Michael |    9 |
+|      7 | Jackson        |    7 |
++--------+----------------+------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT age, breed, name, cat_id FROM cats;
++------+------------+----------------+--------+
+| age  | breed      | name           | cat_id |
++------+------------+----------------+--------+
+|    4 | Tabby      | Ringo          |      1 |
+|   10 | Maine Coon | Cindy          |      2 |
+|   11 | Maine Coon | Dumbledore     |      3 |
+|    4 | Persian    | Egg            |      4 |
+|   13 | Tabby      | Misty          |      5 |
+|    9 | Ragdoll    | George Michael |      6 |
+|    7 | Sphynx     | Jackson        |      7 |
++------+------------+----------------+--------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT cat_id, name, age, breed FROM cats;
++--------+----------------+------+------------+
+| cat_id | name           | age  | breed      |
++--------+----------------+------+------------+
+|      1 | Ringo          |    4 | Tabby      |
+|      2 | Cindy          |   10 | Maine Coon |
+|      3 | Dumbledore     |   11 | Maine Coon |
+|      4 | Egg            |    4 | Persian    |
+|      5 | Misty          |   13 | Tabby      |
+|      6 | George Michael |    9 | Ragdoll    |
+|      7 | Jackson        |    7 | Sphynx     |
++--------+----------------+------+------------+
+7 rows in set (0.00 sec)
+
+mysql> # this was the very basic use of the select statement
+mysql> 
+mysql> # use of the where clause with select statement
+mysql> 
+mysql> #Select by age:
+mysql> SELECT * FROM cats WHERE age=4;
++--------+-------+---------+------+
+| cat_id | name  | breed   | age  |
++--------+-------+---------+------+
+|      1 | Ringo | Tabby   |    4 |
+|      4 | Egg   | Persian |    4 |
++--------+-------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> #Select by name:
+mysql> 
+mysql> SELECT * FROM cats WHERE name='Egg';
++--------+------+---------+------+
+| cat_id | name | breed   | age  |
++--------+------+---------+------+
+|      4 | Egg  | Persian |    4 |
++--------+------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> 
+mysql> #Notice how it deals with case:
+mysql> 
+mysql> SELECT * FROM cats WHERE name='egG';
++--------+------+---------+------+
+| cat_id | name | breed   | age  |
++--------+------+---------+------+
+|      4 | Egg  | Persian |    4 |
++--------+------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> # where is case insensitive
+mysql> 
+mysql> SELECT cat_id FROM cats;
++--------+
+| cat_id |
++--------+
+|      1 |
+|      2 |
+|      3 |
+|      4 |
+|      5 |
+|      6 |
+|      7 |
++--------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT name, breed FROM cats;
++----------------+------------+
+| name           | breed      |
++----------------+------------+
+| Ringo          | Tabby      |
+| Cindy          | Maine Coon |
+| Dumbledore     | Maine Coon |
+| Egg            | Persian    |
+| Misty          | Tabby      |
+| George Michael | Ragdoll    |
+| Jackson        | Sphynx     |
++----------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT name, age FROM cats WHERE breed='Tabby';
++-------+------+
+| name  | age  |
++-------+------+
+| Ringo |    4 |
+| Misty |   13 |
++-------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT cat_id, age FROM cats WHERE cat_id=age;
++--------+------+
+| cat_id | age  |
++--------+------+
+|      4 |    4 |
+|      7 |    7 |
++--------+------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> SELECT * FROM cats WHERE cat_id=age;
++--------+---------+---------+------+
+| cat_id | name    | breed   | age  |
++--------+---------+---------+------+
+|      4 | Egg     | Persian |    4 |
+|      7 | Jackson | Sphynx  |    7 |
++--------+---------+---------+------+
+2 rows in set (0.00 sec)
+
+mysql> # aliases =  virtual name
+mysql> 
+mysql> SELECT cat_id AS id, name FROM cats;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | Ringo          |
+|  2 | Cindy          |
+|  3 | Dumbledore     |
+|  4 | Egg            |
+|  5 | Misty          |
+|  6 | George Michael |
+|  7 | Jackson        |
++----+----------------+
+7 rows in set (0.00 sec)
+
+mysql> # cat_id column name is displayed as id
+mysql> 
+mysql> SELECT name AS 'cat name', breed AS 'kitty breed' FROM cats;
++----------------+-------------+
+| cat name       | kitty breed |
++----------------+-------------+
+| Ringo          | Tabby       |
+| Cindy          | Maine Coon  |
+| Dumbledore     | Maine Coon  |
+| Egg            | Persian     |
+| Misty          | Tabby       |
+| George Michael | Ragdoll     |
+| Jackson        | Sphynx      |
++----------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> DESC cats;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| cat_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name   | varchar(100) | YES  |     | NULL    |                |
+| breed  | varchar(100) | YES  |     | NULL    |                |
+| age    | int(11)      | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> # from desc we can see that aliases are just virtual they do not modify the table column name in reality
+mysql> # the Update of CRUD
+mysql> # the update command
+mysql> 
+mysql> #Updating Data
+mysql> 
+mysql> UPDATE cats SET breed='Shorthair' WHERE breed='Tabby';
+Query OK, 2 rows affected (0.14 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> 
+mysql> # update -> Set -> where
+mysql> 
+mysql> select * from cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      1 | Ringo          | Shorthair  |    4 |
+|      2 | Cindy          | Maine Coon |   10 |
+|      3 | Dumbledore     | Maine Coon |   11 |
+|      4 | Egg            | Persian    |    4 |
+|      5 | Misty          | Shorthair  |   13 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jackson        | Sphynx     |    7 |
++--------+----------------+------------+------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE cats SET age=14 WHERE name='Misty';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> # update is used to modify the entries in the table
+mysql> 
+mysql> # try selecting the data before updating it 
+mysql> # as there is no undo button in mysql
+mysql> # try confirming the data before updating it
+mysql> 
+mysql> SELECT * FROM cats WHERE name='Jackson';
++--------+---------+--------+------+
+| cat_id | name    | breed  | age  |
++--------+---------+--------+------+
+|      7 | Jackson | Sphynx |    7 |
++--------+---------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE cats SET name='Jack' WHERE name='Jackson';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM cats WHERE name='Jackson';
+Empty set (0.01 sec)
+
+mysql> SELECT * FROM cats WHERE name='Jack';
++--------+------+--------+------+
+| cat_id | name | breed  | age  |
++--------+------+--------+------+
+|      7 | Jack | Sphynx |    7 |
++--------+------+--------+------+
+1 row in set (0.01 sec)
+
+mysql> SELECT * FROM cats WHERE name='Ringo';
++--------+-------+-----------+------+
+| cat_id | name  | breed     | age  |
++--------+-------+-----------+------+
+|      1 | Ringo | Shorthair |    4 |
++--------+-------+-----------+------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE cats SET breed='British Shorthair' WHERE name='Ringo';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM cats WHERE name='Ringo';
++--------+-------+-------------------+------+
+| cat_id | name  | breed             | age  |
++--------+-------+-------------------+------+
+|      1 | Ringo | British Shorthair |    4 |
++--------+-------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM cats;
++--------+----------------+-------------------+------+
+| cat_id | name           | breed             | age  |
++--------+----------------+-------------------+------+
+|      1 | Ringo          | British Shorthair |    4 |
+|      2 | Cindy          | Maine Coon        |   10 |
+|      3 | Dumbledore     | Maine Coon        |   11 |
+|      4 | Egg            | Persian           |    4 |
+|      5 | Misty          | Shorthair         |   14 |
+|      6 | George Michael | Ragdoll           |    9 |
+|      7 | Jack           | Sphynx            |    7 |
++--------+----------------+-------------------+------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM cats WHERE breed='Maine Coon';
++--------+------------+------------+------+
+| cat_id | name       | breed      | age  |
++--------+------------+------------+------+
+|      2 | Cindy      | Maine Coon |   10 |
+|      3 | Dumbledore | Maine Coon |   11 |
++--------+------------+------------+------+
+2 rows in set (0.01 sec)
+
+mysql> UPDATE cats SET age=12 WHERE breed='Maine Coon';
+Query OK, 2 rows affected (0.02 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM cats WHERE breed='Maine Coon';
++--------+------------+------------+------+
+| cat_id | name       | breed      | age  |
++--------+------------+------------+------+
+|      2 | Cindy      | Maine Coon |   12 |
+|      3 | Dumbledore | Maine Coon |   12 |
++--------+------------+------------+------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM cats;
++--------+----------------+-------------------+------+
+| cat_id | name           | breed             | age  |
++--------+----------------+-------------------+------+
+|      1 | Ringo          | British Shorthair |    4 |
+|      2 | Cindy          | Maine Coon        |   12 |
+|      3 | Dumbledore     | Maine Coon        |   12 |
+|      4 | Egg            | Persian           |    4 |
+|      5 | Misty          | Shorthair         |   14 |
+|      6 | George Michael | Ragdoll           |    9 |
+|      7 | Jack           | Sphynx            |    7 |
++--------+----------------+-------------------+------+
+7 rows in set (0.00 sec)
+
+mysql> # Delete from CRUD
+mysql> 
+mysql> SELECT * FROM cats;
++--------+----------------+-------------------+------+
+| cat_id | name           | breed             | age  |
++--------+----------------+-------------------+------+
+|      1 | Ringo          | British Shorthair |    4 |
+|      2 | Cindy          | Maine Coon        |   12 |
+|      3 | Dumbledore     | Maine Coon        |   12 |
+|      4 | Egg            | Persian           |    4 |
+|      5 | Misty          | Shorthair         |   14 |
+|      6 | George Michael | Ragdoll           |    9 |
+|      7 | Jack           | Sphynx            |    7 |
++--------+----------------+-------------------+------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM cats WHERE name='egg';
++--------+------+---------+------+
+| cat_id | name | breed   | age  |
++--------+------+---------+------+
+|      4 | Egg  | Persian |    4 |
++--------+------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM cats WHERE name='Egg';
+Query OK, 1 row affected (0.12 sec)
+
+mysql> SELECT * FROM cats;
++--------+----------------+-------------------+------+
+| cat_id | name           | breed             | age  |
++--------+----------------+-------------------+------+
+|      1 | Ringo          | British Shorthair |    4 |
+|      2 | Cindy          | Maine Coon        |   12 |
+|      3 | Dumbledore     | Maine Coon        |   12 |
+|      5 | Misty          | Shorthair         |   14 |
+|      6 | George Michael | Ragdoll           |    9 |
+|      7 | Jack           | Sphynx            |    7 |
++--------+----------------+-------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> # entry for egg is gone
+mysql> 
+mysql> # if you write
+mysql> # delete from cats;
+mysql> #it will delete all the entries from the table cats;
+mysql> #leaving the ch==
+mysql> 
+mysql> #leaving the schema untouched
+mysql> 
+mysql> SELECT * FROM cats WHERE age=4;
++--------+-------+-------------------+------+
+| cat_id | name  | breed             | age  |
++--------+-------+-------------------+------+
+|      1 | Ringo | British Shorthair |    4 |
++--------+-------+-------------------+------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM cats WHERE age=4;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> SELECT * FROM cats WHERE age=4;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM cats;
++--------+----------------+------------+------+
+| cat_id | name           | breed      | age  |
++--------+----------------+------------+------+
+|      2 | Cindy          | Maine Coon |   12 |
+|      3 | Dumbledore     | Maine Coon |   12 |
+|      5 | Misty          | Shorthair  |   14 |
+|      6 | George Michael | Ragdoll    |    9 |
+|      7 | Jack           | Sphynx     |    7 |
++--------+----------------+------------+------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT *  FROM cats WHERE cat_id=age;
++--------+------+--------+------+
+| cat_id | name | breed  | age  |
++--------+------+--------+------+
+|      7 | Jack | Sphynx |    7 |
++--------+------+--------+------+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM cats WHERE cat_id=age;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> 
+mysql> DELETE FROM cats;
+Query OK, 4 rows affected (0.04 sec)
+
+mysql> SELECT * FROM cats;
+Empty set (0.00 sec)
+
+mysql> ##################### now lets try all the CRUD operations at once #####################
+mysql> 
+mysql> #################### Create #####################
+mysql> 
+mysql> SELECT database();
++------------+
+| database() |
++------------+
+| course     |
++------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE DATABASE shirts_db;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use shirts_db;
+Database changed
+mysql> SELECT database();
++------------+
+| database() |
++------------+
+| shirts_db  |
++------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE shirts
+    ->   (
+    ->     shirt_id INT NOT NULL AUTO_INCREMENT,
+    ->     article VARCHAR(100),
+    ->     color VARCHAR(100),
+    ->     shirt_size VARCHAR(100),
+    ->     last_worn INT,
+    ->     PRIMARY KEY(shirt_id)
+    ->   );
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> DESC shirts;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| shirt_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+| article    | varchar(100) | YES  |     | NULL    |                |
+| color      | varchar(100) | YES  |     | NULL    |                |
+| shirt_size | varchar(100) | YES  |     | NULL    |                |
+| last_worn  | int(11)      | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> INSERT INTO shirts(article, color, shirt_size, last_worn) VALUES
+    -> ('t-shirt', 'white', 'S', 10),
+    -> ('t-shirt', 'green', 'S', 200),
+    -> ('polo shirt', 'black', 'M', 10),
+    -> ('tank top', 'blue', 'S', 50),
+    -> ('t-shirt', 'pink', 'S', 0),
+    -> ('polo shirt', 'red', 'M', 5),
+    -> ('tank top', 'white', 'S', 200),
+    -> ('tank top', 'blue', 'M', 15);
+Query OK, 8 rows affected (0.03 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM shirts;
++----------+------------+-------+------------+-----------+
+| shirt_id | article    | color | shirt_size | last_worn |
++----------+------------+-------+------------+-----------+
+|        1 | t-shirt    | white | S          |        10 |
+|        2 | t-shirt    | green | S          |       200 |
+|        3 | polo shirt | black | M          |        10 |
+|        4 | tank top   | blue  | S          |        50 |
+|        5 | t-shirt    | pink  | S          |         0 |
+|        6 | polo shirt | red   | M          |         5 |
+|        7 | tank top   | white | S          |       200 |
+|        8 | tank top   | blue  | M          |        15 |
++----------+------------+-------+------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> INSERT INTO shirts(color, article, shirt_size, last_worn) 
+    -> VALUES('purple', 'polo shirt', 'medium', 50);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> SELECT * FROM shirts;
++----------+------------+--------+------------+-----------+
+| shirt_id | article    | color  | shirt_size | last_worn |
++----------+------------+--------+------------+-----------+
+|        1 | t-shirt    | white  | S          |        10 |
+|        2 | t-shirt    | green  | S          |       200 |
+|        3 | polo shirt | black  | M          |        10 |
+|        4 | tank top   | blue   | S          |        50 |
+|        5 | t-shirt    | pink   | S          |         0 |
+|        6 | polo shirt | red    | M          |         5 |
+|        7 | tank top   | white  | S          |       200 |
+|        8 | tank top   | blue   | M          |        15 |
+|        9 | polo shirt | purple | medium     |        50 |
++----------+------------+--------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> ################ READ ##################
+mysql> 
+mysql> SELECT article, color FROM shirts;
++------------+--------+
+| article    | color  |
++------------+--------+
+| t-shirt    | white  |
+| t-shirt    | green  |
+| polo shirt | black  |
+| tank top   | blue   |
+| t-shirt    | pink   |
+| polo shirt | red    |
+| tank top   | white  |
+| tank top   | blue   |
+| polo shirt | purple |
++------------+--------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE shirt_size='M';
++----------+------------+-------+------------+-----------+
+| shirt_id | article    | color | shirt_size | last_worn |
++----------+------------+-------+------------+-----------+
+|        3 | polo shirt | black | M          |        10 |
+|        6 | polo shirt | red   | M          |         5 |
+|        8 | tank top   | blue  | M          |        15 |
++----------+------------+-------+------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT article, color, shirt_size, last_worn FROM shirts WHERE shirt_size='M';
++------------+-------+------------+-----------+
+| article    | color | shirt_size | last_worn |
++------------+-------+------------+-----------+
+| polo shirt | black | M          |        10 |
+| polo shirt | red   | M          |         5 |
+| tank top   | blue  | M          |        15 |
++------------+-------+------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> ################ UPDATE ###################
+mysql> 
+mysql> SELECT * FROM shirts WHERE article='polo shirt';
++----------+------------+--------+------------+-----------+
+| shirt_id | article    | color  | shirt_size | last_worn |
++----------+------------+--------+------------+-----------+
+|        3 | polo shirt | black  | M          |        10 |
+|        6 | polo shirt | red    | M          |         5 |
+|        9 | polo shirt | purple | medium     |        50 |
++----------+------------+--------+------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE shirts SET shirt_size='L' WHERE article='polo shirt';
+Query OK, 3 rows affected (0.35 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> SELECT * FROM shirts WHERE article='polo shirt';
++----------+------------+--------+------------+-----------+
+| shirt_id | article    | color  | shirt_size | last_worn |
++----------+------------+--------+------------+-----------+
+|        3 | polo shirt | black  | L          |        10 |
+|        6 | polo shirt | red    | L          |         5 |
+|        9 | polo shirt | purple | L          |        50 |
++----------+------------+--------+------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts;
++----------+------------+--------+------------+-----------+
+| shirt_id | article    | color  | shirt_size | last_worn |
++----------+------------+--------+------------+-----------+
+|        1 | t-shirt    | white  | S          |        10 |
+|        2 | t-shirt    | green  | S          |       200 |
+|        3 | polo shirt | black  | L          |        10 |
+|        4 | tank top   | blue   | S          |        50 |
+|        5 | t-shirt    | pink   | S          |         0 |
+|        6 | polo shirt | red    | L          |         5 |
+|        7 | tank top   | white  | S          |       200 |
+|        8 | tank top   | blue   | M          |        15 |
+|        9 | polo shirt | purple | L          |        50 |
++----------+------------+--------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE last_worn=15;
++----------+----------+-------+------------+-----------+
+| shirt_id | article  | color | shirt_size | last_worn |
++----------+----------+-------+------------+-----------+
+|        8 | tank top | blue  | M          |        15 |
++----------+----------+-------+------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE shirts SET last_worn=0 WHERE last_worn=15;
+Query OK, 1 row affected (0.12 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM shirts WHERE last_worn=15;
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE last_worn=0;
++----------+----------+-------+------------+-----------+
+| shirt_id | article  | color | shirt_size | last_worn |
++----------+----------+-------+------------+-----------+
+|        5 | t-shirt  | pink  | S          |         0 |
+|        8 | tank top | blue  | M          |         0 |
++----------+----------+-------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE color='white';
++----------+----------+-------+------------+-----------+
+| shirt_id | article  | color | shirt_size | last_worn |
++----------+----------+-------+------------+-----------+
+|        1 | t-shirt  | white | S          |        10 |
+|        7 | tank top | white | S          |       200 |
++----------+----------+-------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE shirts SET color='off white', shirt_size='XS' WHERE color='white';
+Query OK, 2 rows affected (0.03 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM shirts WHERE color='white';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE color='off white';
++----------+----------+-----------+------------+-----------+
+| shirt_id | article  | color     | shirt_size | last_worn |
++----------+----------+-----------+------------+-----------+
+|        1 | t-shirt  | off white | XS         |        10 |
+|        7 | tank top | off white | XS         |       200 |
++----------+----------+-----------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts;
++----------+------------+-----------+------------+-----------+
+| shirt_id | article    | color     | shirt_size | last_worn |
++----------+------------+-----------+------------+-----------+
+|        1 | t-shirt    | off white | XS         |        10 |
+|        2 | t-shirt    | green     | S          |       200 |
+|        3 | polo shirt | black     | L          |        10 |
+|        4 | tank top   | blue      | S          |        50 |
+|        5 | t-shirt    | pink      | S          |         0 |
+|        6 | polo shirt | red       | L          |         5 |
+|        7 | tank top   | off white | XS         |       200 |
+|        8 | tank top   | blue      | M          |         0 |
+|        9 | polo shirt | purple    | L          |        50 |
++----------+------------+-----------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> ################ DELETE ##################
+mysql> 
+mysql> SELECT * FROM shirts;
++----------+------------+-----------+------------+-----------+
+| shirt_id | article    | color     | shirt_size | last_worn |
++----------+------------+-----------+------------+-----------+
+|        1 | t-shirt    | off white | XS         |        10 |
+|        2 | t-shirt    | green     | S          |       200 |
+|        3 | polo shirt | black     | L          |        10 |
+|        4 | tank top   | blue      | S          |        50 |
+|        5 | t-shirt    | pink      | S          |         0 |
+|        6 | polo shirt | red       | L          |         5 |
+|        7 | tank top   | off white | XS         |       200 |
+|        8 | tank top   | blue      | M          |         0 |
+|        9 | polo shirt | purple    | L          |        50 |
++----------+------------+-----------+------------+-----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM shirts WHERE last_worn=200;
++----------+----------+-----------+------------+-----------+
+| shirt_id | article  | color     | shirt_size | last_worn |
++----------+----------+-----------+------------+-----------+
+|        2 | t-shirt  | green     | S          |       200 |
+|        7 | tank top | off white | XS         |       200 |
++----------+----------+-----------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE FROM shirts WHERE last_worn=200;
+Query OK, 2 rows affected (0.48 sec)
+
+mysql> SELECT * FROM shirts WHERE article='tank top';
++----------+----------+-------+------------+-----------+
+| shirt_id | article  | color | shirt_size | last_worn |
++----------+----------+-------+------------+-----------+
+|        4 | tank top | blue  | S          |        50 |
+|        8 | tank top | blue  | M          |         0 |
++----------+----------+-------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE FROM shirts WHERE article='tank top';
+Query OK, 2 rows affected (0.11 sec)
+
+mysql> SELECT * FROM shirts WHERE article='tank top';
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM shirts;
++----------+------------+-----------+------------+-----------+
+| shirt_id | article    | color     | shirt_size | last_worn |
++----------+------------+-----------+------------+-----------+
+|        1 | t-shirt    | off white | XS         |        10 |
+|        3 | polo shirt | black     | L          |        10 |
+|        5 | t-shirt    | pink      | S          |         0 |
+|        6 | polo shirt | red       | L          |         5 |
+|        9 | polo shirt | purple    | L          |        50 |
++----------+------------+-----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM shirts;
+Query OK, 5 rows affected (0.14 sec)
+
+mysql> SELECT * FROM shirts;
+Empty set (0.00 sec)
+
+mysql> DROP TABLE shirts;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
+Empty set (0.01 sec)
+
+mysql> DESC shirts;
+ERROR 1146 (42S02): Table 'shirts_db.shirts' doesn't exist
+mysql> 
+mysql> select database();
++------------+
+| database() |
++------------+
+| shirts_db  |
++------------+
+1 row in set (0.00 sec)
+
+mysql> drop database shirts_db;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.02 sec)
+
+mysql> ############################################################################################
+mysql> 
+mysql> ## end of part 1 ##
+mysql> 
+mysql> notee
